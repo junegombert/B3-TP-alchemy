@@ -1,14 +1,18 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from models.User import User
 
-# Créer l'extension
-db = SQLAlchemy()
+postgresql_url = 'postgresql://postgres:mypassword@localhost:5432/mydatabase'
+engine = create_engine(postgresql_url)
+Session = sessionmaker(bind=engine)
+session = Session()
 
-# Créer l'application
-app = Flask(__name__)
+new_user = User(name="Charlie", email="charlie@example.com")
+session.add(new_user)
+session.commit()
 
-# Configurer la BDD
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
+all_users = session.query(User).all()
+for user in all_users:
+    print(f"User: {user.id}, Name: {user.name}, Email: {user.email}")
 
-# Initialiser l'appli à partir de l'extension
-db.init_app(app)
+session.close()
