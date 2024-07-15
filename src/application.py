@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from models import Base, User, Game, Publisher, Book
+from models import Base, User, Game, Publisher, Book, Client, ClientBookPurchase
 
 postgresql_url = 'postgresql://postgres:mypassword@localhost:5432/mydatabase'
 engine = create_engine(postgresql_url, client_encoding="utf-8")
@@ -40,5 +40,16 @@ session.commit()
 all_publishers = session.query(Publisher).all()
 for publisher in all_publishers:
   print(f"Editeur: {publisher.publisher_id}, Nom Editeur: {publisher.publisher_name}, Livres: {publisher.publisher_books}")
+
+# Exo 5 : Clients
+new_client = Client(client_name="Didier", client_email="didier@a.com")
+new_client.books.append(new_book)
+
+session.add(new_client)
+session.commit()
+
+all_clients = session.query(Client).all()
+for client in all_clients:
+  print(f"Client: {client.client_id}, Nom: {client.client_name}, Livres: {client.books}")
 
 session.close()
