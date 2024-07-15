@@ -1,8 +1,5 @@
 from sqlalchemy import Column, String, Integer
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
-
-Base = declarative_base()
+from models.Base import Base
 
 class User(Base):
     __tablename__ = 'users'

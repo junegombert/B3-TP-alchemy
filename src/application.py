@@ -1,9 +1,9 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from models.User import User
+from models import User
 
 postgresql_url = 'postgresql://postgres:mypassword@localhost:5432/mydatabase'
-engine = create_engine(postgresql_url)
+engine = create_engine(postgresql_url, client_encoding="utf-8")
 Session = sessionmaker(bind=engine)
 session = Session()
 
