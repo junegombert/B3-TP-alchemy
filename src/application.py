@@ -8,7 +8,7 @@ db = SQLAlchemy()
 app = Flask(__name__)
 
 # Configurer la BDD
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql:///project.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
 
 # Initialiser l'appli à partir de l'extension
 db.init_app(app)
