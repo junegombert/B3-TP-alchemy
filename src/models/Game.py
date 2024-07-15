@@ -1,9 +1,10 @@
-from sqlalchemy import Column, String, Integer
+from sqlalchemy import String, Integer
+from sqlalchemy.orm import Mapped, mapped_column
 from . import Base
 
 class Game(Base):
     __tablename__ = 'games'
 
-    game_id = Column(Integer, primary_key=True)
-    title = Column(String)
-    nb_min_joueurs = Column(Integer)
+    game_id: Mapped[int] = mapped_column(primary_key=True)
+    title: Mapped[str] = mapped_column(String(32))
+    nb_min_joueurs: Mapped[int] = mapped_column()

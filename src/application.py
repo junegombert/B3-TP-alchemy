@@ -15,8 +15,8 @@ session.commit()
 
 all_users = session.query(User).all()
 for user in all_users:
-    print(f"User: {user.id}, Name: {user.name}, Email: {user.email}")
- """
+    print(f"User: {user.id}, Name: {user.name}, Email: {user.email}") """
+
 
 # Exo 3: Jeux
 """ new_game = Game(title="Minecraft", nb_min_joueurs=1)
@@ -25,8 +25,8 @@ session.commit()
 
 all_games = session.query(Game).all()
 for game in all_games:
-  print(f"Game: {game.game_id}, Title: {game.title}, Nombre min. Joueurs: {game.nb_min_joueurs}")
- """
+  print(f"Game: {game.game_id}, Title: {game.title}, Nombre min. Joueurs: {game.nb_min_joueurs}") """
+
 
 # Exo 4: Editeur et Livres
 new_publisher = Publisher(publisher_name="Awesome Books")
